@@ -72,6 +72,7 @@ def display_caves(num_caves, sanpy_pos=None, user_guess=None):
     if user_guess is not None:
         # mark the user's guess
         caves[user_guess - 1] = 'X'  
+        
     if sanpy_pos is not None:
          # mark SANPY's position
         caves[sanpy_pos - 1] = 'S' 
