@@ -1,7 +1,7 @@
 import random
 import string
 
-# Function to get user preferences
+# function to get user preferences
 def get_user_preferences():
     # looping validates preferences
     while True:
