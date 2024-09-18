@@ -21,7 +21,7 @@ SANPY Game is a simple text-based game where you must find SANPY hidden in one o
 
 Guess the Number Game is a simple Python-based game where the computer picks a random number between 1 and 100, and the player must guess it. The game provides hints whether the guess is too high or too low, and the player has 10 chances to guess the correct number. After each game, the player is given the option to play again.
 
-### Features
+### ✨ Features
 
 - **Random Number Generation:** The computer picks a random number between 1 and 100.
 - **User Input:** The player can input guesses, and the game tracks the number of attempts.
@@ -29,3 +29,15 @@ Guess the Number Game is a simple Python-based game where the computer picks a r
 - **Limited Chances:** The player has 10 attempts to guess the correct number.
 - **Replay Option:** After finishing the game, the player can choose to play again or quit.
 - **Time Tracking:** The game tracks the time it takes for the player to guess the correct number.
+
+# 🔐 3. Password Manager
+
+### ✨ Description
+
+Password Manager is a Python script that allows you to generate passwords with customizable options. You can specify the length and types of characters (uppercase, lowercase, digits, symbols) to include. The generated passwords can be saved to a file and viewed later.
+
+### ✨ Features
+
+- **Customizable Password Generation:** Choose length and character types for your password.
+- **Password Saving:** Save generated passwords to a file for future use.
+- **View Saved Passwords:** Retrieve and view previously saved passwords.
