@@ -2,7 +2,7 @@ import random
 import time
 
 # functions to print welcome messages
-def print_welcome_message(limit_of_guesses):
+def welcome_messages(limit_of_guesses):
     # set the border length
     border_length = 50
     
@@ -20,10 +20,15 @@ def print_welcome_message(limit_of_guesses):
     print("*" + " " * (border_length - 2) + "*")
     print("*" * border_length)
     
+# function input user name
+def get_user_name():
+    """Get the user's name."""
+    return input("Enter your name: ").strip()
+
 # function to print the instructions
-def print_instructions():
+def instructions():
     """Print the instructions on how to play the game."""
-    print('''
+    print('''\n
     Instructions:
     1. I will choose a random number between 1 and 100.
     2. Your goal is to guess the number I have chosen.
@@ -35,6 +40,18 @@ def print_instructions():
     8. You can choose to play again after the game ends.
     ''')
 
+# function to confirm if the user is ready
+def confirm_readiness():
+    """Ask the user if they are ready to start the game."""
+    while True:
+        response = input("Are you ready to start? (yes/no): ").lower()
+        if response == 'yes':
+            break
+        elif response == 'no':
+            print(f"Okay, take your time. You can start when you're ready.")
+        else:
+            print("Please enter 'yes' or 'no'.")
+
 # function for guessing the number of chances
 def guess_the_number():
     # Determine the number range
@@ -45,14 +62,20 @@ def guess_the_number():
     guessed_numbers = []
     
     # start timers
-    start_time = time.time()  
+    start_time = time.time()
     
     # show welcome message
-    print_welcome_message(limit_of_guesses)
+    welcome_messages(limit_of_guesses)
+    
+    # show input name
+    user_name = get_user_name()
+    
+    # confirm readiness
+    confirm_readiness()
     
     # show instructions
-    print_instructions()
-
+    instructions()
+    
     # logic game
     while guess != secret_number and number_of_guesses < limit_of_guesses:
         try:
@@ -73,13 +96,13 @@ def guess_the_number():
             else:
                 end_time = time.time()  # End timer
                 elapsed_time = round(end_time - start_time, 2)
-                print(f"Congratulations! You guessed the correct number in {number_of_guesses} guesses and {elapsed_time} seconds!")
+                print(f"Congratulations {user_name}! You guessed the correct number in {number_of_guesses} guesses and {elapsed_time} seconds!")
                 break
         except ValueError:
             print("Enter a valid number.")
     
     if guess != secret_number:
-        print(f"What a shame! You've run out of chances. The correct number was {secret_number}.")
+        print(f"What a shame {user_name}! You've run out of chances. The correct number was {secret_number}.")
     
     # offering a replay
     play_again = input("Want to play again? [yes/no]: ").lower()
