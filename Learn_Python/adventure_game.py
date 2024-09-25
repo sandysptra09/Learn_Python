@@ -1,6 +1,8 @@
 # track player's inventory
 player_inventory = {
-    "has_sword": False
+    "has_sword": False,
+    "gold": 100,
+    "solved_puzzle": False
 }
 
 # functions to start the game and provide a story introduction to the player
@@ -35,24 +37,25 @@ def first_choice():
 # functions for the story when the player chooses to go to the cave
 def cave():
     print("\nYou arrive at the cave entrance. It's dark inside.")
-    print("Do you:")
-    print("1. Enter the cave")
-    print("2. Run away back to the forest")
-    
-    # input player options
-    choice = input("Enter 1 or 2: ")
-
-    if choice == "1":
-        # if you choose to enter the cave, proceed to the inside_cave function
+    print("Before entering the deeper parts of the cave, you notice an ancient stone tablet with a puzzle inscribed on it.")
+    if player_inventory["solved_puzzle"]:
+        print("You've already solved the puzzle. The path ahead is clear.")
         inside_cave()
-        
-    elif choice == "2":
-        # narration when players run and fall then end of story
-        print("You run back to the forest, but you trip and fall into a pit!")
-        print("Game over.")
-        
     else:
-        print("Invalid choice, please enter 1 or 2.")
+        print("Solve the puzzle to proceed.")
+        puzzle()
+
+# A simple puzzle for the player to solve
+def puzzle():
+    print("\nThe stone tablet reads: 'I speak without a mouth and hear without ears. I have no body, but I come alive with wind.'")
+    answer = input("What am I? (Type your answer): ").lower()
+    
+    if answer == "echo":
+        print("The puzzle glows, and the path to the cave opens!")
+        player_inventory["solved_puzzle"] = True
+        inside_cave()
+    else:
+        print("Wrong answer. The path remains closed.")
         cave()
 
 # function for the story in the cave (after entering the cave)
@@ -98,7 +101,8 @@ def village():
     print("Do you:")
     print("1. Talk to the village elder")
     print("2. Visit the marketplace")
-    choice = input("Enter 1 or 2: ")
+    print("3. Explore the village")
+    choice = input("Enter 1, 2, or 3: ")
 
     if choice == "1":
         # if you choose to talk to an elder, proceed to the elder function
@@ -107,9 +111,12 @@ def village():
     elif choice == "2":
         # if you select a marketplace, proceed to the marketplace function
         marketplace()
+
+    elif choice == "3":
+        explore_village()
         
     else:
-        print("Invalid choice, please enter 1 or 2.")
+        print("Invalid choice, please enter 1, 2, or 3.")
         village()
 
 # function when players talk to village elders
@@ -134,7 +141,7 @@ def elder():
 
 # function for the story when the player chooses to visit the market
 def marketplace():
-    print("\nYou visit the marketplace. A merchant offers you a magic sword for 100 gold coins.")
+    print(f"\nYou visit the marketplace. A merchant offers you a magic sword for 100 gold coins. You have {player_inventory['gold']} gold.")
     print("Do you:")
     print("1. Buy the sword")
     print("2. Refuse the offer and leave")
@@ -142,11 +149,14 @@ def marketplace():
 
     if choice == "1":
         # if you buy a sword, your character becomes stronger
-        print("You buy the magic sword and feel much stronger. Maybe now you can defeat the dragon!")
-        
-        # player now has the magic sword
-        player_inventory["has_sword"] = True  
-        cave()
+        if player_inventory["gold"] >= 100:
+            print("You buy the magic sword and feel much stronger. Maybe now you can defeat the dragon!")
+            player_inventory["has_sword"] = True  
+            player_inventory["gold"] -= 100
+            cave()
+        else:
+            print("You don't have enough gold! Try exploring or completing tasks to earn more.")
+            village()
         
     elif choice == "2":
         # if you decline the offer, move on to another adventure
@@ -155,6 +165,25 @@ def marketplace():
     else:
         print("Invalid choice, please enter 1 or 2.")
         marketplace()
+
+# function to explore the village
+def explore_village():
+    print("\nYou explore the village and find a small pond with shimmering water. You also meet other villagers who talk about hidden gold in the forest.")
+    print("Do you want to:")
+    print("1. Search for the hidden gold in the forest")
+    print("2. Return to the village center")
+    choice = input("Enter 1 or 2: ")
+
+    if choice == "1":
+        print("You explore the forest and find 50 gold coins hidden under a tree!")
+        player_inventory["gold"] += 50
+        print(f"You now have {player_inventory['gold']} gold.")
+        village()
+    elif choice == "2":
+        village()
+    else:
+        print("Invalid choice, please enter 1 or 2.")
+        explore_village()
 
 # start the game and start the game from the beginning
 start_game()
