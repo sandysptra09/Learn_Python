@@ -1,8 +1,9 @@
 # functions to start the game and provide a story introduction to the player
-def start_game():
-    print("Welcome to the Adventure Game!")
-    print("You find yourself in a dark forest with two paths ahead.")
-    print("One path leads to a mysterious cave, and the other to a quiet village.")
+def start_game(show_welcome=True):
+    if show_welcome:
+        print("Welcome to the Adventure Game!")
+        print("You find yourself in a dark forest with two paths ahead.")
+        print("One path leads to a mysterious cave, and the other to a quiet village.")
     
     # call function first choice
     first_choice()
@@ -73,8 +74,8 @@ def inside_cave():
         print("You quietly sneak out of the cave and back to the forest.")
         print("Back to the start.")
         
-        # start the game again
-        start_game()
+        # start the game again without showing welcome message
+        start_game(show_welcome=False)
         
     else:
         print("Invalid choice, please enter 1, 2, or 3.")
@@ -114,7 +115,7 @@ def elder():
     elif choice == "2":
         # if the break, the story continues
         print("You rest for the night in the village. In the morning, you feel refreshed and ready for a new adventure!")
-        start_game()
+        start_game(show_welcome=False)
         
     else:
         print("Invalid choice, please enter 1 or 2.")
@@ -137,7 +138,7 @@ def marketplace():
     elif choice == "2":
         # if you decline the offer, move on to another adventure
         print("You leave the marketplace and continue your adventure.")
-        start_game()
+        start_game(show_welcome=False)
     else:
         print("Invalid choice, please enter 1 or 2.")
         marketplace()
