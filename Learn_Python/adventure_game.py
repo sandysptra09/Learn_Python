@@ -1,3 +1,8 @@
+# track player's inventory
+player_inventory = {
+    "has_sword": False
+}
+
 # functions to start the game and provide a story introduction to the player
 def start_game(show_welcome=True):
     if show_welcome:
@@ -27,7 +32,7 @@ def first_choice():
         print("Invalid choice, please enter 1 or 2.")  
         first_choice()
 
- # functions for the story when the player chooses to go to the cave
+# functions for the story when the player chooses to go to the cave
 def cave():
     print("\nYou arrive at the cave entrance. It's dark inside.")
     print("Do you:")
@@ -65,9 +70,15 @@ def inside_cave():
         print("Congratulations, you win!")
         
     elif choice == "2":
-        # if you attack the dragon, then the player fails and the story ends
-        print("You charge at the dragon with your sword, but the dragon wakes up and breathes fire on you.")
-        print("You are burned to ashes. Game over.")
+        # If the player attacks the dragon, check if they have the magic sword
+        if player_inventory["has_sword"]:
+            print("You charge at the dragon with your magic sword!")
+            print("The dragon roars and breathes fire, but your sword deflects the flames.")
+            print("You strike the dragon down with your sword. You have defeated the dragon!")
+            print("Congratulations, you win!")
+        else:
+            print("You charge at the dragon with your regular sword, but the dragon wakes up and breathes fire on you.")
+            print("You are burned to ashes. Game over.")
         
     elif choice == "3":
         # if the player runs silently, then return to the beginning
@@ -127,12 +138,14 @@ def marketplace():
     print("Do you:")
     print("1. Buy the sword")
     print("2. Refuse the offer and leave")
-    choice = input("Enter 1 or 2:")
+    choice = input("Enter 1 or 2: ")
 
     if choice == "1":
         # if you buy a sword, your character becomes stronger
         print("You buy the magic sword and feel much stronger. Maybe now you can defeat the dragon!")
-        # continue to the cave with a sword
+        
+        # player now has the magic sword
+        player_inventory["has_sword"] = True  
         cave()
         
     elif choice == "2":
@@ -143,5 +156,5 @@ def marketplace():
         print("Invalid choice, please enter 1 or 2.")
         marketplace()
 
-# Start the game and start the game from the beginning
+# start the game and start the game from the beginning
 start_game()
