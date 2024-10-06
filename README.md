@@ -66,3 +66,15 @@ The player's inventory is tracked throughout the game, affecting their ability t
 - **🧩 Puzzles and Riddles**: Solve puzzles to progress in the story.
 - **⚔️ Combat System**: Engage in battles with a dragon 🐉 and other challenges.
 - **🗺️ Exploration**: Explore a village 🏘️, a cave ⛰️, and a forest 🌲 in search of treasure and adventure.
+
+# 🧮 5. MathCalc: A Simple Math Calculator
+
+### ✨ Description
+
+**MathCalc** is a simple Python-based console application designed to help users perform various mathematical calculations, such as area, perimeter, and volume calculations, as well as solve quadratic equations and perform trigonometric calculations.
+
+### ✨ Features
+
+- **Geometric Calculations:** Calculate the area and perimeter of squares, rectangles, circles, and triangles. Calculate the volume of cubes, rectangular prisms, cylinders, and cones.
+- **Algebraic Calculation:** Solve quadratic equations in the form `ax^2 + bx + c = 0` using the quadratic formula.
+- **Trigonometric Functions:** Perform trigonometric calculations for sine, cosine, and tangent given an angle in degrees.
