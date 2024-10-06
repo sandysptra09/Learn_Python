@@ -1,10 +1,19 @@
 # import package
 import math
 
+# function untuk validasi input angka
+def validasi_input(prompt):
+    while True:
+        try:
+            nilai = float(input(prompt))
+            return nilai
+        except ValueError:
+            print("Input tidak valid, masukkan angka yang benar.")
+
 # function untuk menghitung luas dan keliling persegi
 def persegi():
     # initialize
-    sisi = float(input("Masukkan panjang sisi persegi: "))
+    sisi = validasi_input("Masukkan panjang sisi persegi: ")
     luas = sisi ** 2
     keliling = 4 * sisi
     
@@ -15,8 +24,8 @@ def persegi():
 # function untuk menghitung luas dan keliling persegi panjang
 def persegi_panjang():
     # initialize
-    panjang = float(input("Masukkan panjang persegi panjang: "))
-    lebar = float(input("Masukkan lebar persegi panjang: "))
+    panjang = validasi_input("Masukkan panjang persegi panjang: ")
+    lebar = validasi_input("Masukkan lebar persegi panjang: ")
     luas = panjang * lebar
     keliling = 2 * (panjang + lebar)
     
@@ -27,7 +36,7 @@ def persegi_panjang():
 # function untuk menghitung luas dan keliling lingkaran
 def lingkaran():
     # initialize
-    jari_jari = float(input("Masukkan jari-jari lingkaran: "))
+    jari_jari = validasi_input("Masukkan jari-jari lingkaran: ")
     luas = math.pi * (jari_jari ** 2)
     keliling = 2 * math.pi * jari_jari
     
@@ -38,8 +47,8 @@ def lingkaran():
 # function untuk menghitung luas segitiga
 def segitiga():
     # initialize
-    alas = float(input("Masukkan panjang alas segitiga: "))
-    tinggi = float(input("Masukkan tinggi segitiga: "))
+    alas = validasi_input("Masukkan panjang alas segitiga: ")
+    tinggi = validasi_input("Masukkan tinggi segitiga: ")
     luas = 0.5 * alas * tinggi
     
     # output
@@ -48,7 +57,7 @@ def segitiga():
 # function untuk menghitung volume kubus
 def kubus():
     # initialize
-    sisi = float(input("Masukkan panjang sisi kubus: "))
+    sisi = validasi_input("Masukkan panjang sisi kubus: ")
     volume = sisi ** 3
     
     # output
@@ -57,9 +66,9 @@ def kubus():
 # function untuk menghitung volume balok
 def balok():
     # initialize
-    panjang = float(input("Masukkan panjang balok: "))
-    lebar = float(input("Masukkan lebar balok: "))
-    tinggi = float(input("Masukkan tinggi balok: "))
+    panjang = validasi_input("Masukkan panjang balok: ")
+    lebar = validasi_input("Masukkan lebar balok: ")
+    tinggi = validasi_input("Masukkan tinggi balok: ")
     volume = panjang * lebar * tinggi
     
     # output
@@ -68,8 +77,8 @@ def balok():
 # function untuk menghitung volume tabung
 def tabung():
     # initialize
-    jari_jari = float(input("Masukkan jari-jari tabung: "))
-    tinggi = float(input("Masukkan tinggi tabung: "))
+    jari_jari = validasi_input("Masukkan jari-jari tabung: ")
+    tinggi = validasi_input("Masukkan tinggi tabung: ")
     volume = math.pi * (jari_jari ** 2) * tinggi
     
     # output
@@ -78,8 +87,8 @@ def tabung():
 # function untuk menghitung volume kerucut
 def kerucut():
     # initialize
-    jari_jari = float(input("Masukkan jari-jari kerucut: "))
-    tinggi = float(input("Masukkan tinggi kerucut: "))
+    jari_jari = validasi_input("Masukkan jari-jari kerucut: ")
+    tinggi = validasi_input("Masukkan tinggi kerucut: ")
     volume = (1/3) * math.pi * (jari_jari ** 2) * tinggi
     
     # output
@@ -89,9 +98,9 @@ def kerucut():
 def persamaan_kuadrat():
     # initialize
     print("Persamaan kuadrat dalam bentuk ax^2 + bx + c = 0")
-    a = float(input("Masukkan nilai a: "))
-    b = float(input("Masukkan nilai b: "))
-    c = float(input("Masukkan nilai c: "))
+    a = validasi_input("Masukkan nilai a: ")
+    b = validasi_input("Masukkan nilai b: ")
+    c = validasi_input("Masukkan nilai c: ")
 
     # output dan hitung diskriminan
     diskriminan = b ** 2 - 4 * a * c
@@ -112,7 +121,7 @@ def persamaan_kuadrat():
 # function untuk perhitungan trigonometri (sin, cos, tan)
 def trigonometri():
     # initialize
-    sudut = float(input("Masukkan sudut dalam derajat: "))
+    sudut = validasi_input("Masukkan sudut dalam derajat: ")
     
     # konversi sudut dari derajat ke radian
     radian = math.radians(sudut)  
